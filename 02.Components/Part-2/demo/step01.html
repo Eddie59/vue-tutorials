@@ -23,7 +23,6 @@
 					<label>Search</label>
 					<input type="text" class="search-input" v-model="searchQuery" />
 				</div>
-
 			</div>
 			<div class="container">
 				<simple-grid :data-list="people" :columns="columns" :search-key="searchQuery">
@@ -61,10 +60,8 @@
 			Vue.component('simple-grid', {
 				template: '#grid-template',
 				props: ['dataList', 'columns', 'searchKey'],
-
 				methods: {
 					deleteItem: function(entry) {
-						
 						var data = this.dataList
 						data.forEach(function(item, i){
 							if(item === entry){

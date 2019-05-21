@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<title></title>
-		<link rel="stylesheet" href="//bootswatch.com/flatly/bootstrap.css"/>
+		<link rel="stylesheet" href="assets/css/bootstrap.min.css">
 		<link rel="stylesheet" href="assets/css/custom.css" />
 	</head>
 
@@ -56,12 +56,14 @@
 			<div>
 				<ul>
 					<li>
+                        <!--name: 'detail'表示router.map中配置的detail的路径，params: {id: '01'}表示参数名为id，值为01-->
 						<a v-link="{ name: 'detail', params: {id: '01'} }">News 01</a>
 					</li>
 					<li>
 						<a v-link="{ path: '/home/news/detail/02'}">News 02</a>
 					</li>
 					<li>
+
 						<a v-link="{ path: '/home/news/detail/03'}">News 03</a>
 					</li>
 				</ul>
@@ -72,6 +74,7 @@
 		</template>
 		<template id="newsDetail">
 			<div>
+				<!--$route.params.id表示获取路由参数id-->
 				News Detail - {{$route.params.id}} ......
 			</div>
 		</template>
@@ -95,6 +98,7 @@
 	<script src="js/vue.js"></script>
 	<script src="js/vue-router.js"></script>
 	<script>
+		/*定义的时间这些组件是并列的*/
 		var Home = Vue.extend({
 			template: '#home',
 			data: function() {
@@ -103,37 +107,36 @@
 				}
 			}
 		})
-
 		var News = Vue.extend({
 			template: '#news'
 		})
-
 		var NewsDetail = Vue.extend({
 			template: '#newsDetail'
 		})
-
 		var Message = Vue.extend({
 			template: '#message'
 		})
-
 		var About = Vue.extend({
 			template: '#about'
 		})
+
 
 		var router = new VueRouter()
 		router.redirect({
 			'/': '/home'
 		})
+
+
 		router.map({
 			'/home': {
 				component: Home,
 				subRoutes: {
 					'/news': {
-						name: 'news',
+						name: 'news',//给News组件赋值个名字
 						component: News,
 						subRoutes: {
-							'detail/:id': {
-								name: 'detail',
+							'detail/:id': {//冒号表示，访问/home/news/detail/1时最后一位是表示参数id，可以通过$route.params.id来获取
+								name: 'detail',//给detail组件赋值个名字
 								component: NewsDetail
 							}
 						}

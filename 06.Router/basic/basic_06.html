@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<title></title>
-		<link rel="stylesheet" href="//bootswatch.com/flatly/bootstrap.css"/>
+		<link rel="stylesheet" href="assets/css/bootstrap.min.css">
 		<link rel="stylesheet" href="assets/css/custom.css" />
 	</head>
 
@@ -186,16 +186,19 @@
 			}
 		})
 
+
+        /*全局钩子函数，beforeEach：在路由切换开始时调用*/
 		router.beforeEach(function(transition) {
 			well.setColor()
 			well.setTitle('跳转路径<span class="text-danger">[from = ' + transition.from.path + '], [to = ' + transition.to.path + ']</span>')
 			well.setColoredMessage('执行router的全局函数:beforeEach')
 			transition.next()
 		})
-
+        /*全局钩子函数，afterEach：在每次路由切换成功进入激活阶段时被调用*/
 		router.afterEach(function(transition) {
 			well.setColoredMessage('执行router的全局函数:afterEach')
 		})
+
 
 		var App = Vue.extend({})
 		router.start(App, '#app')

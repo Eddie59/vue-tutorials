@@ -12,6 +12,7 @@
 			<div id="searchBar">
 				Search <input type="text" v-model="searchQuery" />
 			</div>
+			<!--:为v-bind的缩写-->
 			<simple-grid :data="gridData" :columns="gridColumns" :filter-key="searchQuery">
 			</simple-grid>
 		</div>
@@ -38,6 +39,8 @@
 	</body>
 	<script src="js/vue.js"></script>
 	<script>
+		/*声明一个组件，id为simple-grid，模块为grid-template，props说明，使用了父组件的属性，对应关系在simple-grid中写着*/
+		/*props声明在子组件中的类型*/
 		Vue.component('simple-grid', {
 			template: '#grid-template',
 			props: {

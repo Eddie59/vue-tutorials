@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:v-bind="http://www.w3.org/1999/xhtml">
 
 	<head>
 		<meta charset="UTF-8">
@@ -191,13 +191,18 @@
 
 		<template id="dialog-template">
 			<div class="dialogs">
+                <!--下面的v-bind:class=是基于对象的，针对class的增强，
+                会遍历value，如果为true,渲染否则不渲染。这里如果show为true，class为dialog-active如果为false，class为空-->
 				<div class="dialog" v-bind:class="{ 'dialog-active': show }">
 					<div class="dialog-content">
 						<div class="close rotate">
 							<span class="iconfont icon-close" @click="close"></span>
 						</div>
+						<!--槽一-->
 						<slot name="header"></slot>
+						<!--槽二-->
 						<slot name="body"></slot>
+						<!--槽三-->
 						<slot name="footer"></slot>
 					</div>
 				</div>

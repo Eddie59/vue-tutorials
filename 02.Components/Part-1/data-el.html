@@ -14,6 +14,7 @@
 			<my-component>
 			</my-component>
 		</div>
+
 		<template id="myComponent">
 			<p>
 				<input v-model="a" /> {{ a }}
@@ -24,12 +25,17 @@
 	</script>
 
 	<script>
-
-
+/*        传入Vue构造器的多数选项也可以用在 Vue.extend() 或Vue.component()中，不过有两个特例： data 和el。
+Vue.js规定：在定义组件的选项时，data和el选项必须使用函数*/
 		Vue.component('my-component', {
+		    template:"#myComponent",
+            //data el在component方法中使用时，必须为function
 			data: function(){
 				return {a : 1}
 			}
+			/*data:{
+			    a:1
+            }*/
 		})
 
 		new Vue({

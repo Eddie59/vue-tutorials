@@ -67,6 +67,7 @@
 				methods: {
 					notify: function() {
 						if (this.msg.trim()) {
+						    //向上派发，些组件会触发父组件的child-msg方法
 							this.$dispatch('child-msg', this.msg)
 							this.msg = ''
 						}

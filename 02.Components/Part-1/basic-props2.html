@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="styles/demo.css"/>
+</head>
+<body>
+<div id="app">
+    <subcomponent :my-name="a" :my-age="b"></subcomponent>
+</div>
+<template id="subTemplate">
+    <table>
+        <tr>
+            <th colspan="2">
+                子组件数据
+            </th>
+        </tr>
+        <tr>
+            <td>my name</td>
+            <td>{{ myName }}</td>
+        </tr>
+        <tr>
+            <td>my age</td>
+            <td>{{ myAge }}</td>
+        </tr>
+    </table>
+</template>
+</body>
+<script src="js/vue.js"></script>
+<script type="text/javascript">
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            a: "a1",
+            b: "b1",
+        },
+        components: {
+            "subcomponent": {
+                template: "#subTemplate",
+                props: ["myName", "myAge"],
+            }
+        },
+    });
+</script>
+</html>

@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<title></title>
-		<link rel="stylesheet" href="//bootswatch.com/flatly/bootstrap.css"/>
+		<link rel="stylesheet" href="assets/css/bootstrap.min.css">
 		<link rel="stylesheet" href="assets/css/custom.css" />
 	</head>
 
@@ -20,6 +20,7 @@
 			<div class="row">
 				<div class="col-xs-2 col-xs-offset-2">
 					<div class="list-group">
+						<!--activeClass，激活状态时，class为active-->
 						<a class="list-group-item" v-link="{ path: '/home', activeClass: 'active'}">Home</a>
 						<a class="list-group-item" v-link="{ path: '/about', activeClass: 'active'}">About</a>
 					</div>

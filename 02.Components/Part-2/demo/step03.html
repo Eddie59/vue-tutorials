@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml">
 
 	<head>
 		<meta charset="UTF-8">
@@ -23,7 +23,6 @@
 					<label>Search</label>
 					<input type="text" class="search-input" v-model="searchQuery" />
 				</div>
-
 			</div>
 			<div class="container">
 				<simple-grid :data-list="people" :columns="columns" :search-key="searchQuery">
@@ -73,6 +72,7 @@
 						<div class="dialog-body">
 							<div v-for="field in fields" class="form-group">
 								<label>{{ field.name }}</label>
+								<!--如果有dataSource属性-->
 								<select v-if="field.dataSource" v-model="item[field.name]">
 									<option v-for="opt in field.dataSource" :value="opt">{{ opt }}</option>
 								</select>
@@ -105,7 +105,6 @@
 				},
 				props: ['dataList', 'columns', 'searchKey'],
 				methods: {
-
 					openNewItemDialog: function(title) {
 						// 对话框的标题
 						this.title = title
